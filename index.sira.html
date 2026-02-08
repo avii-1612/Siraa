@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Siraa ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px 10px;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* 💌 CARD */
+.card{
+  background:rgba(0,0,0,0.35);
+  padding:28px 22px;
+  border-radius:22px;
+  max-width:520px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(15px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+  font-size:2rem;
+  margin-bottom:8px;
+}
+
+p{
+  font-size:1rem;
+  line-height:1.6;
+  margin:10px 0;
+}
+
+/* 🥺 EMOTION BOX */
+.emotion-box{
+  width:100%;
+  min-height:220px;
+  border-radius:18px;
+  margin:18px 0;
+  background:rgba(255,255,255,0.15);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 12px 25px rgba(0,0,0,0.4);
+  padding:10px;
+}
+
+.emotion-face{
+  font-size:4.8rem;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.12);}
+}
+
+/* 💍 BUTTONS */
+button{
+  background:#ff3d68;
+  border:none;
+  padding:12px 24px;
+  font-size:1rem;
+  color:#fff;
+  border-radius:30px;
+  cursor:pointer;
+  margin:8px 6px;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#ff1744;
+  transform:scale(1.04);
+}
+
+#hiddenMessage{
+  display:none;
+  margin-top:24px;
+}
+
+/* 🌸💖✨ MAGIC EFFECTS */
+.effects{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:999;
+}
+
+.effect{
+  position:absolute;
+  top:-40px;
+  animation:fall linear infinite;
+  opacity:0.9;
+}
+
+@keyframes fall{
+  0%{transform:translateY(-40px) rotate(0deg);}
+  100%{transform:translateY(120vh) rotate(360deg);}
+}
+
+/* ✨ STARS */
+.star{
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:0.4;}
+  to{opacity:1;}
+}
+
+/* 💗 GLOW */
+.glow{
+  animation:glowPulse 1.5s infinite alternate;
+}
+
+@keyframes glowPulse{
+  from{box-shadow:0 0 18px rgba(255,255,255,0.4);}
+  to{box-shadow:0 0 34px rgba(255,105,180,0.9);}
+}
+
+/* 📱 EXTRA SMALL PHONES */
+@media (max-width:360px){
+  h1{font-size:1.7rem;}
+  p{font-size:0.95rem;}
+  .emotion-face{font-size:4.2rem;}
+  button{font-size:0.95rem;padding:10px 20px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌙 LOCK -->
+<div class="card" id="locked">
+  <h1>🌙 Just a moment, Siraa…</h1>
+  <p>
+    Something from my heart is unlocking ❤️<br><br>
+    <strong id="countdown">10</strong> heartbeats…
+  </p>
+</div>
+
+<!-- ❤️ MAIN -->
+<div class="card" id="main" style="display:none">
+  <h1>Siraa… ❤️</h1>
+
+  <p>
+    Somewhere between thinking of you<br>
+    and missing you a little too much,<br>
+    my heart decided something.
+  </p>
+
+  <div class="emotion-box">
+    <div class="emotion-face">🥺</div>
+    <p>This is exactly how I feel when I think of you</p>
+  </div>
+
+  <p>
+    I don’t want perfect moments.<br>
+    I just want <strong>you</strong> in all of them.
+  </p>
+
+  <p><strong>Will you be mine, Siraa?</strong></p>
+
+  <button onclick="yesClicked()">YES 💍</button>
+  <button onclick="alert('It’s okay… I’ll still choose you ❤️')">I’m shy 🙈</button>
+
+  <div id="hiddenMessage">
+    <h2>🥹❤️</h2>
+    <p>
+      You said YES… and my heart felt brave for the first time.<br><br>
+      I promise honesty when it’s hard,<br>
+      comfort when you need it,<br>
+      and love — even on ordinary days.<br><br>
+      This isn’t just a question.<br>
+      This is my heart choosing you. Always.
+    </p>
+  </div>
+</div>
+
+<!-- 💖 EFFECTS -->
+<div class="effects" id="effects"></div>
+
+<script>
+/* ⏱️ COUNTDOWN */
+let seconds = 10;
+const countdownEl = document.getElementById("countdown");
+const locked = document.getElementById("locked");
+const main = document.getElementById("main");
+
+const timer = setInterval(() => {
+  seconds--;
+  countdownEl.textContent = seconds;
+
+  if(seconds <= 0){
+    clearInterval(timer);
+    locked.style.display = "none";
+    main.style.display = "block";
+  }
+}, 1000);
+
+/* 💍 YES */
+function yesClicked(){
+  const msg = document.getElementById("hiddenMessage");
+  msg.style.display = "block";
+  main.classList.add("glow");
+  startMagic();
+
+  setTimeout(() => {
+    msg.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, 300);
+}
+
+/* 🌸💖✨ MAGIC */
+function startMagic(){
+  const container = document.getElementById("effects");
+  const items = ["🌸","🌹","🌺","💐","🌷","💖","💕","✨","⭐"];
+
+  for(let i=0;i<35;i++){
+    const el = document.createElement("div");
+    el.className = "effect";
+    el.textContent = items[Math.floor(Math.random()*items.length)];
+
+    if(el.textContent === "⭐" || el.textContent === "✨"){
+      el.classList.add("star");
+    }
+
+    el.style.left = Math.random()*100 + "vw";
+    el.style.fontSize = (1.2 + Math.random()*1.5) + "rem";
+    el.style.animationDuration = (3 + Math.random()*4) + "s";
+
+    container.appendChild(el);
+    setTimeout(() => el.remove(), 8000);
+  }
+}
+</script>
+
+</body>
+</html>
